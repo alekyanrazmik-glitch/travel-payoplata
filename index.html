@@ -82,14 +82,27 @@
     box-shadow:0 40px 90px -50px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.04);
   }
   .tp-widget-inner{background:#ffffff;border-radius:16px;padding:18px;}
-  #root{min-height:120px;}
-  /* Бренд-акценты внутри виджета Nemo (best-effort: основные кнопки) */
+  #root{min-height:120px;
+    font-family:'Open Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;}
+  /* --- Бренд-стилизация формы Nemo ---
+     Селекторы по ТИПАМ элементов (input/select/button), а не по классам:
+     классы виджета появляются только при рендере с CDN, а типы элементов
+     стабильны — так стилизация надёжно ложится на реальную форму. */
+  #root input, #root select, #root textarea{ border-radius:10px !important; }
+  #root input:focus, #root select:focus, #root textarea:focus{
+    border-color:var(--accent) !important;
+    box-shadow:0 0 0 3px rgba(46,123,255,.18) !important;
+  }
+  #root button, #root [class*="button"], #root [class*="btn"]{ border-radius:10px !important; }
+  /* Основная кнопка поиска — фирменный синий градиент */
   #root button[type="submit"],
-  #root .btn-primary,#root .button--primary,#root .nemo-btn-primary,
-  #root .search-button,#root [class*="submit"]{
+  #root [class*="submit"], #root [class*="btn-primary"], #root [class*="button--primary"],
+  #root [class*="search-button"], #root [class*="searchButton"]{
     background:linear-gradient(180deg,var(--accent),var(--accent-d)) !important;
     border-color:var(--accent-d) !important;color:#fff !important;
+    box-shadow:0 8px 20px -10px rgba(46,123,255,.7) !important;
   }
+  #root a{ color:var(--accent) !important; }
 
   /* ---------- Advantages ---------- */
   .tp-adv{padding:10px 0 44px;}
