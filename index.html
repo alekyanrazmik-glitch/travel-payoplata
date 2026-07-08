@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PlataPay Travel — авиабилеты по всему миру, оплата из России</title>
+<meta name="description" content="Поиск и бронирование авиабилетов по всему миру. Оплата зарубежных билетов из России — быстро, безопасно и без автосписаний.">
+<meta name="keywords" content="авиабилеты, купить авиабилеты, дешёвые авиабилеты, бронирование авиабилетов, оплата авиабилетов из России, PlataPay">
+<link rel="canonical" href="https://travel.payoplata.ru/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://travel.payoplata.ru/">
+<meta property="og:title" content="PlataPay Travel — авиабилеты по всему миру">
+<meta property="og:description" content="Поиск и бронирование авиабилетов. Оплата зарубежных билетов из России — быстро и безопасно.">
+
+<!-- Шрифт и стили виджета Nemo Travel (из инструкции, раздел 4.1) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700&subset=cyrillic">
+<link rel="stylesheet" href="https://cdn.nemo.travel/search-form/v2.5.22/style.css">
+
+<style>
+  :root{
+    --bg:#08172F; --bg2:#0c1f40; --bg3:#13294e; --card:#0d1f44;
+    --line:#1d3a6b; --text:#eef3ff; --muted:#9fb2d4; --accent:#2e7bff;
+    --accent2:#7BAEFF; --green:#22C55E;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg); color:var(--text); max-width:100%; overflow-x:hidden;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+    font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Segoe UI',system-ui,sans-serif;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px;}
+
+  /* Header */
+  .tp-hdr{position:sticky;top:0;z-index:50;background:rgba(8,23,47,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .tp-hdr-in{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .tp-logo{font-size:22px;font-weight:800;letter-spacing:-.01em;}
+  .tp-logo span{color:var(--accent);}
+  .tp-nav{display:flex;gap:22px;align-items:center;font-size:14.5px;font-weight:600;}
+  .tp-nav a{color:var(--muted);}
+  .tp-nav a:hover{color:var(--text);}
+  .tp-cta{background:linear-gradient(180deg,#2e7bff,#1e5fd6);color:#fff !important;padding:9px 16px;border-radius:12px;}
+  .tp-cta:hover{filter:brightness(1.08);}
+
+  /* Hero */
+  .tp-hero{padding:56px 0 28px;text-align:center;background:
+     radial-gradient(1200px 480px at 50% -120px, rgba(46,123,255,.22), transparent 70%);}
+  .tp-eyebrow{display:inline-block;color:var(--accent2);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;}
+  .tp-hero h1{margin:0 0 14px;font-size:clamp(28px,5vw,46px);font-weight:800;letter-spacing:-.02em;line-height:1.1;}
+  .tp-hero h1 span{color:var(--accent);}
+  .tp-hero p{margin:0 auto;max-width:640px;color:var(--muted);font-size:clamp(15px,2vw,18px);}
+
+  /* Widget mount card */
+  .tp-widget-sec{padding:14px 0 40px;}
+  .tp-widget-card{
+    background:linear-gradient(180deg,var(--bg2),var(--card));
+    border:1px solid var(--line);border-radius:22px;padding:18px;
+    box-shadow:0 30px 80px -40px rgba(0,0,0,.7);
+  }
+  /* Let the Nemo widget breathe on the dark card */
+  #root{min-height:120px;}
+
+  /* Trust row */
+  .tp-trust{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:8px 0 52px;}
+  .tp-trust .t{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:16px 18px;}
+  .tp-trust .t b{display:block;font-size:15px;margin-bottom:4px;}
+  .tp-trust .t span{color:var(--muted);font-size:13.5px;}
+
+  /* Footer */
+  .tp-foot{border-top:1px solid var(--line);background:#07132a;padding:36px 0 40px;}
+  .tp-foot-in{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;}
+  .tp-foot .brand{font-size:20px;font-weight:800;}
+  .tp-foot .brand span{color:var(--accent);}
+  .tp-foot .muted{color:var(--muted);font-size:13.5px;max-width:640px;}
+  .tp-foot .links{display:flex;gap:18px;font-size:14px;font-weight:600;}
+  .tp-foot .links a{color:var(--muted);}
+  .tp-foot .links a:hover{color:var(--text);}
+
+  @media(max-width:768px){
+    .wrap{padding:0 16px;}
+    .tp-nav{gap:14px;}
+    .tp-nav .hide-sm{display:none;}
+    .tp-trust{grid-template-columns:1fr 1fr;}
+    .tp-hero{padding:40px 0 20px;}
+    .tp-widget-card{padding:12px;border-radius:18px;}
+  }
+  @media(max-width:480px){
+    .tp-trust{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="tp-hdr">
+  <div class="wrap tp-hdr-in">
+    <a class="tp-logo" href="https://payoplata.ru">Plata<span>Pay</span> Travel</a>
+    <nav class="tp-nav">
+      <a class="hide-sm" href="https://payoplata.ru/catalog">Сервисы</a>
+      <a class="hide-sm" href="https://payoplata.ru/faq">Вопросы</a>
+      <a class="tp-cta" href="https://t.me/Kimzar_A" target="_blank" rel="noopener">Написать в Telegram</a>
+    </nav>
+  </div>
+</header>
+
+<section class="tp-hero">
+  <div class="wrap">
+    <span class="tp-eyebrow">Авиабилеты по всему миру</span>
+    <h1>Найдём и оформим <span>авиабилеты</span> для вас</h1>
+    <p>Поиск рейсов по всему миру и бронирование напрямую. Оплата удобным способом из России — быстро, безопасно и без автосписаний.</p>
+  </div>
+</section>
+
+<section class="tp-widget-sec">
+  <div class="wrap">
+    <div class="tp-widget-card">
+
+      <!-- ============================================================
+           ВИДЖЕТ ПОИСКА АВИАБИЛЕТОВ · Nemo Travel
+           Взято из вашей инструкции (PDF, раздел 4.1):
+             • CDN виджета: https://cdn.nemo.travel/search-form/v2.5.22/
+             • API/booking: https://booking.uzairlines.online
+           Если в инструкции код отличается (другой файл .js или другие
+           параметры init) — замените блок между этими комментариями
+           целиком на точный код из PDF.
+      ============================================================ -->
+      <div id="root"></div>
+      <script src="https://cdn.nemo.travel/search-form/v2.5.22/main.js"></script>
+      <script>
+        FlightsSearchWidget.init({
+          container: '#root',
+          apiUrl: 'https://booking.uzairlines.online',
+          lang: 'ru',
+          currency: 'RUB'
+        });
+      </script>
+      <!-- ==================== /ВИДЖЕТ ==================== -->
+
+    </div>
+  </div>
+</section>
+
+<section class="tp-widget-sec" style="padding-top:0;">
+  <div class="wrap">
+    <div class="tp-trust">
+      <div class="t"><b>Оплата из России</b><span>Российскими картами и через СБП</span></div>
+      <div class="t"><b>Без автосписаний</b><span>Оплачиваете только выбранный билет</span></div>
+      <div class="t"><b>Поддержка каждый день</b><span>На связи с 08:00 до 24:00 МСК</span></div>
+      <div class="t"><b>Помощь с оформлением</b><span>Подскажем и оформим, если что‑то непонятно</span></div>
+    </div>
+  </div>
+</section>
+
+<footer class="tp-foot">
+  <div class="wrap tp-foot-in">
+    <div>
+      <div class="brand">Plata<span>Pay</span> Travel</div>
+      <p class="muted">Оплата зарубежных сервисов и билетов из России — быстро, безопасно и без автосписаний. PlataPay не является банком или платёжной системой и оказывает консультационную и посредническую помощь.</p>
+    </div>
+    <div class="links">
+      <a href="https://payoplata.ru">Главная</a>
+      <a href="https://payoplata.ru/catalog">Каталог</a>
+      <a href="https://payoplata.ru/faq">FAQ</a>
+      <a href="https://payoplata.ru/contacts">Контакты</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
