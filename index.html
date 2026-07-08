@@ -11,162 +11,136 @@
 <meta property="og:url" content="https://travel.payoplata.ru/">
 <meta property="og:title" content="PlataPay Travel — авиабилеты по всему миру">
 <meta property="og:description" content="Поиск и бронирование авиабилетов. Оплата зарубежных билетов из России — быстро и безопасно.">
-<meta name="theme-color" content="#ffffff">
+<meta property="og:image" content="https://travel.payoplata.ru/logo.png">
+<meta name="theme-color" content="#08172F">
+<link rel="icon" href="logo.png" type="image/png">
 
-<!-- Шрифты бренда (Poppins) + шрифт виджета Nemo (Open Sans) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap&subset=cyrillic,latin">
-<!-- Стили виджета Nemo Travel (инструкция «АэроТур», раздел 4.1) -->
+<!-- Шрифт и стили виджета Nemo Travel (инструкция «АэроТур», раздел 4.1) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700&subset=cyrillic">
 <link rel="stylesheet" href="https://cdn.nemo.travel/search-form/v2.5.22/flights.search.widget.min.css">
 
 <style>
+  /* Палитра основного сайта payoplata.ru */
   :root{
-    /* Фирменные цвета PlataPay Travel */
-    --navy:#1b2a63;      /* «Plata» */
-    --blue:#3b6ef5;      /* «Pay» / основной акцент */
-    --blue-d:#2a54d4;
-    --green:#2f9e46;     /* «Travel» */
-    --green-d:#268a3c;
-
-    --ink:#16224f;       /* заголовки */
-    --body:#48546f;      /* основной текст */
-    --muted:#7c88a5;
-    --bg:#ffffff;
-    --bg2:#f3f7fd;       /* фон секций */
-    --card:#ffffff;
-    --line:#e4eaf5;
-    --shadow:0 24px 60px -30px rgba(27,42,99,.35);
+    color-scheme: dark;
+    --bg:#08172F; --bg2:#0c1f40; --bg3:#13294e;
+    --line:#16315f; --line2:#1d3a6b;
+    --text:#eef3ff; --body:#cfd9ef; --muted:#9fb2d4; --muted2:#8499c0;
+    --accent:#2e7bff; --accent-d:#1e5fd6; --accent-l:#7BAEFF;
+    --green:#33c25b;
   }
-  *{box-sizing:border-box;}
+  *,*::before,*::after{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
-    background:var(--bg); color:var(--body); max-width:100%; overflow-x:hidden;
+    background:var(--bg); color:var(--text); max-width:100%; overflow-x:hidden;
     line-height:1.55; -webkit-font-smoothing:antialiased;
-    font-family:'Open Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Segoe UI',system-ui,sans-serif;
   }
-  a{color:inherit;text-decoration:none;}
-  .wrap{max-width:1160px;margin:0 auto;padding:0 24px;}
-
-  /* ---------- Логотип (SVG) ---------- */
-  .tp-logo{display:inline-flex;align-items:center;line-height:0;}
-  .tp-logo svg{height:34px;width:auto;display:block;}
-  .tp-foot .tp-logo svg{height:38px;}
-  @media(max-width:480px){
-    .tp-logo svg{height:28px;}
-  }
+  img{max-width:100%;height:auto;}
+  a{color:var(--accent-l);text-decoration:none;}
+  a:hover{color:var(--text);}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
 
   /* ---------- Header ---------- */
-  .tp-hdr{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);
+  .tp-hdr{position:sticky;top:0;z-index:30;background:rgba(8,23,47,.92);
     backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
   .tp-hdr-in{display:flex;align-items:center;justify-content:space-between;height:66px;}
-  .tp-nav{display:flex;gap:22px;align-items:center;font-size:14.5px;font-weight:600;
-    font-family:'Poppins',sans-serif;}
-  .tp-nav a{color:var(--body);}
-  .tp-nav a:hover{color:var(--navy);}
-  .tp-cta{background:linear-gradient(180deg,var(--blue),var(--blue-d));color:#fff !important;
-    padding:10px 18px;border-radius:12px;box-shadow:0 8px 20px -8px rgba(59,110,245,.6);}
-  .tp-cta:hover{filter:brightness(1.06);}
+  .tp-logo{display:inline-flex;align-items:center;line-height:0;}
+  .tp-logo img{height:38px;width:auto;display:block;}
+  .tp-nav{display:flex;gap:12px;align-items:center;font-size:14px;font-weight:600;}
+  .tp-nav a.link{color:var(--muted);padding:6px 6px;}
+  .tp-nav a.link:hover{color:var(--text);}
+  .tp-cta{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:999px;
+    font-weight:600;background:linear-gradient(180deg,var(--accent),var(--accent-d));color:#fff !important;
+    box-shadow:0 8px 24px -8px rgba(46,123,255,.7);}
+  .tp-cta:hover{filter:brightness(1.08);}
 
   /* ---------- Hero ---------- */
-  .tp-hero{padding:58px 0 30px;text-align:center;background:
-     radial-gradient(1100px 460px at 50% -140px, rgba(59,110,245,.10), transparent 70%);}
-  .tp-eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--blue);font-weight:700;
-    font-size:13px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:14px;
-    font-family:'Poppins',sans-serif;
-    background:rgba(59,110,245,.08);border:1px solid rgba(59,110,245,.18);
-    padding:6px 14px;border-radius:999px;}
-  .tp-hero h1{margin:0 0 14px;color:var(--ink);font-family:'Poppins',sans-serif;
-    font-size:clamp(28px,5vw,46px);font-weight:800;letter-spacing:-.02em;line-height:1.1;}
-  .tp-hero h1 span{color:var(--blue);}
-  .tp-hero p{margin:0 auto;max-width:640px;color:var(--muted);font-size:clamp(15px,2vw,18px);}
+  .tp-hero{padding:56px 0 26px;text-align:center;
+    background:radial-gradient(1200px 520px at 50% -140px, rgba(46,123,255,.22), transparent 70%);}
+  .tp-eyebrow{display:inline-flex;align-items:center;gap:7px;color:#cfe0ff;font-weight:600;font-size:13px;
+    background:rgba(46,123,255,.10);border:1px solid rgba(46,123,255,.28);
+    padding:7px 14px;border-radius:999px;margin-bottom:16px;backdrop-filter:blur(6px);}
+  .tp-hero h1{margin:0 0 14px;font-size:clamp(28px,5vw,46px);font-weight:700;letter-spacing:-.02em;line-height:1.12;}
+  .tp-hero h1 span{color:var(--accent-l);}
+  .tp-hero p.lead{margin:0 auto;max-width:660px;color:var(--body);font-size:clamp(15px,2vw,18px);}
+  .tp-trust-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px;}
+  .tp-trust-row .chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#cfe0ff;
+    background:rgba(46,123,255,.10);border:1px solid rgba(46,123,255,.28);border-radius:999px;
+    padding:7px 12px;backdrop-filter:blur(6px);}
 
-  /* ---------- Widget mount card ---------- */
-  .tp-widget-sec{padding:20px 0 40px;}
-  .tp-widget-head{display:flex;align-items:center;gap:10px;margin:0 0 12px;padding:0 4px;}
-  .tp-widget-head b{font-family:'Poppins',sans-serif;color:var(--ink);font-size:17px;font-weight:700;}
+  /* ---------- Widget ---------- */
+  .tp-widget-sec{padding:26px 0 34px;}
+  .tp-widget-head{display:flex;align-items:center;gap:10px;margin:0 0 14px;}
   .tp-widget-head .dot{width:9px;height:9px;border-radius:50%;background:var(--green);
-    box-shadow:0 0 0 4px rgba(47,158,70,.15);}
+    box-shadow:0 0 0 4px rgba(51,194,91,.18);}
+  .tp-widget-head b{font-size:17px;font-weight:600;color:var(--text);}
+  /* Витрина: тёмная брендовая рамка + светлая панель под форму Nemo */
   .tp-widget-card{
-    background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;
-    box-shadow:var(--shadow);
+    background:linear-gradient(180deg,var(--bg2),var(--bg3));
+    border:1px solid var(--line2);border-radius:22px;padding:14px;
+    box-shadow:0 40px 90px -50px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.04);
   }
+  .tp-widget-inner{background:#ffffff;border-radius:16px;padding:18px;}
   #root{min-height:120px;}
-
-  /* Бренд-акценты внутри виджета Nemo (best-effort: красим основные кнопки/акценты) */
+  /* Бренд-акценты внутри виджета Nemo (best-effort: основные кнопки) */
   #root button[type="submit"],
-  #root .btn-primary,
-  #root .button--primary,
-  #root .nemo-btn-primary,
-  #root .search-button,
-  #root [class*="submit"]{
-    background:linear-gradient(180deg,var(--blue),var(--blue-d)) !important;
-    border-color:var(--blue-d) !important;color:#fff !important;
+  #root .btn-primary,#root .button--primary,#root .nemo-btn-primary,
+  #root .search-button,#root [class*="submit"]{
+    background:linear-gradient(180deg,var(--accent),var(--accent-d)) !important;
+    border-color:var(--accent-d) !important;color:#fff !important;
   }
-  #root a{color:var(--blue);}
 
-  /* ---------- Trust row ---------- */
-  .tp-trust{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:8px 0 56px;}
-  .tp-trust .t{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:18px 18px;}
-  .tp-trust .t .ic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;
-    justify-content:center;margin-bottom:12px;font-size:18px;background:rgba(59,110,245,.10);}
-  .tp-trust .t b{display:block;font-family:'Poppins',sans-serif;color:var(--ink);font-size:15px;
-    font-weight:700;margin-bottom:4px;}
-  .tp-trust .t span{color:var(--muted);font-size:13.5px;}
+  /* ---------- Advantages ---------- */
+  .tp-adv{padding:10px 0 44px;}
+  .tp-adv-grid{display:grid;gap:14px;grid-template-columns:repeat(4,1fr);}
+  .tp-adv-card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+    border:1px solid var(--line);border-radius:16px;padding:20px;backdrop-filter:blur(8px);}
+  .tp-adv-card .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:20px;
+    background:linear-gradient(180deg,var(--accent),var(--accent-d));
+    box-shadow:0 10px 24px -10px rgba(46,123,255,.7);margin-bottom:12px;}
+  .tp-adv-card b{display:block;font-size:15px;font-weight:600;color:var(--text);margin-bottom:5px;}
+  .tp-adv-card span{color:var(--muted);font-size:13.5px;}
+
+  /* ---------- CTA ---------- */
+  .tp-cta-block{background:linear-gradient(180deg,var(--bg2),var(--bg3));border:1px solid var(--line);
+    border-radius:20px;padding:34px 26px;text-align:center;margin-bottom:46px;}
+  .tp-cta-block h2{margin:0 0 8px;font-size:24px;font-weight:600;letter-spacing:-.01em;}
+  .tp-cta-block p{margin:0 0 18px;color:var(--muted);}
+  .tp-btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;
+    font-weight:600;font-size:15px;background:linear-gradient(180deg,var(--accent),var(--accent-d));
+    color:#fff !important;box-shadow:0 8px 24px -8px rgba(46,123,255,.7);}
+  .tp-btn-primary:hover{filter:brightness(1.08);}
 
   /* ---------- Footer ---------- */
-  .tp-foot{border-top:1px solid var(--line);background:var(--bg2);padding:38px 0 42px;}
+  .tp-foot{border-top:1px solid var(--line);background:#07132a;padding:38px 0 42px;}
   .tp-foot-in{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;justify-content:space-between;}
-  .tp-foot .muted{color:var(--muted);font-size:13.5px;max-width:620px;margin:12px 0 0;}
-  .tp-foot .links{display:flex;gap:20px;font-size:14px;font-weight:600;font-family:'Poppins',sans-serif;}
-  .tp-foot .links a{color:var(--body);}
-  .tp-foot .links a:hover{color:var(--navy);}
+  .tp-foot .tp-logo img{height:40px;}
+  .tp-foot .muted{color:var(--muted);font-size:13.5px;max-width:620px;margin:14px 0 0;}
+  .tp-foot .links{display:flex;gap:20px;font-size:14px;font-weight:600;}
+  .tp-foot .links a{color:var(--muted);}
+  .tp-foot .links a:hover{color:var(--text);}
 
+  @media(max-width:900px){ .tp-adv-grid{grid-template-columns:1fr 1fr;} }
   @media(max-width:768px){
     .wrap{padding:0 16px;}
-    .tp-nav{gap:14px;}
     .tp-nav .hide-sm{display:none;}
-    .tp-trust{grid-template-columns:1fr 1fr;}
-    .tp-hero{padding:40px 0 20px;}
-    .tp-widget-card{padding:14px;border-radius:18px;}
+    .tp-hero{padding:40px 0 18px;}
+    .tp-logo img{height:32px;}
   }
-  @media(max-width:480px){
-    .tp-trust{grid-template-columns:1fr;}
-    .tp-logo{font-size:21px;}
-  }
+  @media(max-width:480px){ .tp-adv-grid{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
 
-<!-- ============================================================
-     Логотип PlataPay Travel (SVG-реконструкция по референсу):
-     «Plata» — тёмно-синий с эффектом мела (белый шум/смещение),
-     «Pay» — сплошной синий, «Travel» — зелёный, ниже и правее.
-     Определён один раз, используется через <use> в шапке и подвале.
-============================================================ -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <filter id="tp-chalk" x="-30%" y="-30%" width="160%" height="160%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.85 0.9" numOctaves="2" seed="11" result="noise"/>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-    <g id="tp-logo-mark">
-      <text x="0" y="94" font-family="'Poppins',sans-serif" font-weight="800" font-size="92" letter-spacing="-2" fill="#1b2a63">Plata</text>
-      <text x="0" y="94" font-family="'Poppins',sans-serif" font-weight="800" font-size="92" letter-spacing="-2" fill="#ffffff" opacity="0.4" filter="url(#tp-chalk)">Plata</text>
-      <text x="285" y="94" font-family="'Poppins',sans-serif" font-weight="800" font-size="92" letter-spacing="-2" fill="#3b6ef5">Pay</text>
-      <text x="298" y="131" font-family="'Poppins',sans-serif" font-weight="700" font-size="33" fill="#2f9e46">Travel</text>
-    </g>
-  </defs>
-</svg>
-
 <header class="tp-hdr">
   <div class="wrap tp-hdr-in">
     <a class="tp-logo" href="https://payoplata.ru" aria-label="PlataPay Travel">
-      <svg viewBox="0 0 560 145" role="img"><use href="#tp-logo-mark"/></svg>
+      <img src="logo.png" alt="PlataPay Travel" width="1100" height="349">
     </a>
     <nav class="tp-nav">
-      <a class="hide-sm" href="https://payoplata.ru/catalog">Сервисы</a>
-      <a class="hide-sm" href="https://payoplata.ru/faq">Вопросы</a>
+      <a class="link hide-sm" href="https://payoplata.ru/catalog">Сервисы</a>
+      <a class="link hide-sm" href="https://payoplata.ru/faq">Вопросы</a>
       <a class="tp-cta" href="https://t.me/Kimzar_A" target="_blank" rel="noopener">Написать в Telegram</a>
     </nav>
   </div>
@@ -176,7 +150,13 @@
   <div class="wrap">
     <span class="tp-eyebrow">✈ Авиабилеты по всему миру</span>
     <h1>Найдём и оформим <span>авиабилеты</span> для вас</h1>
-    <p>Поиск рейсов по всему миру и бронирование напрямую. Оплата удобным способом из России — быстро, безопасно и без автосписаний.</p>
+    <p class="lead">Поиск рейсов по всему миру и бронирование напрямую. Оплата удобным способом из России — быстро, безопасно и без автосписаний.</p>
+    <div class="tp-trust-row">
+      <span class="chip">🌍 Рейсы по всему миру</span>
+      <span class="chip">💳 Оплата из России</span>
+      <span class="chip">🔒 Без автосписаний</span>
+      <span class="chip">🕓 Поддержка каждый день</span>
+    </div>
   </div>
 </section>
 
@@ -184,38 +164,48 @@
   <div class="wrap">
     <div class="tp-widget-head"><span class="dot"></span><b>Поиск авиабилетов</b></div>
     <div class="tp-widget-card">
+      <div class="tp-widget-inner">
 
-      <!-- ============================================================
-           ВИДЖЕТ ПОИСКА АВИАБИЛЕТОВ · Nemo Travel
-           Код точно по инструкции «АэроТур» (PDF, раздел 4.1).
-           nemoURL   — booking-поддомен, в DNS уже стоит CNAME → sys.nemo.travel.
-                       На нём должен быть выпущен SSL и передан в «АэроТур» (раздел 1).
-           webskyURL — уточните у «АэроТур»: в инструкции указан демо-адрес.
-      ============================================================ -->
-      <div id="root"></div>
-      <script src="https://cdn.nemo.travel/search-form/v2.5.22/flights.search.widget.min.js"></script>
-      <script>
-        FlightsSearchWidget.init({
-          webskyURL: 'http://demo.websky.aero/gru',
-          nemoURL: 'https://www.travel.payoplata.ru',
-          rootElement: document.getElementById('root'),
-          locale: 'ru'
-        });
-      </script>
-      <!-- ==================== /ВИДЖЕТ ==================== -->
+        <!-- ============================================================
+             ВИДЖЕТ ПОИСКА АВИАБИЛЕТОВ · Nemo Travel
+             Код точно по инструкции «АэроТур» (PDF, раздел 4.1).
+             nemoURL   — booking-поддомен (в DNS уже CNAME → sys.nemo.travel),
+                         нужен SSL + передача данных в «АэроТур» (раздел 1).
+             webskyURL — уточните у «АэроТур»: в инструкции указан демо-адрес.
+        ============================================================ -->
+        <div id="root"></div>
+        <script src="https://cdn.nemo.travel/search-form/v2.5.22/flights.search.widget.min.js"></script>
+        <script>
+          FlightsSearchWidget.init({
+            webskyURL: 'http://demo.websky.aero/gru',
+            nemoURL: 'https://www.travel.payoplata.ru',
+            rootElement: document.getElementById('root'),
+            locale: 'ru'
+          });
+        </script>
+        <!-- ==================== /ВИДЖЕТ ==================== -->
 
+      </div>
     </div>
   </div>
 </section>
 
-<section class="tp-widget-sec" style="padding-top:0;">
+<section class="tp-adv">
   <div class="wrap">
-    <div class="tp-trust">
-      <div class="t"><div class="ic">🇷🇺</div><b>Оплата из России</b><span>Российскими картами и через СБП</span></div>
-      <div class="t"><div class="ic">🔒</div><b>Без автосписаний</b><span>Оплачиваете только выбранный билет</span></div>
-      <div class="t"><div class="ic">💬</div><b>Поддержка каждый день</b><span>На связи с 08:00 до 24:00 МСК</span></div>
-      <div class="t"><div class="ic">🧭</div><b>Помощь с оформлением</b><span>Подскажем и оформим, если что-то непонятно</span></div>
+    <div class="tp-adv-grid">
+      <div class="tp-adv-card"><div class="ic">💳</div><b>Оплата из России</b><span>Российскими картами и через СБП</span></div>
+      <div class="tp-adv-card"><div class="ic">🔒</div><b>Без автосписаний</b><span>Оплачиваете только выбранный билет</span></div>
+      <div class="tp-adv-card"><div class="ic">💬</div><b>Поддержка каждый день</b><span>На связи с 08:00 до 24:00 МСК</span></div>
+      <div class="tp-adv-card"><div class="ic">🧭</div><b>Помощь с оформлением</b><span>Подскажем и оформим, если что-то непонятно</span></div>
     </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="tp-cta-block">
+    <h2>Не нашли нужный рейс или остались вопросы?</h2>
+    <p>Напишите нам — подберём билеты и поможем с оплатой из России.</p>
+    <a class="tp-btn-primary" href="https://t.me/Kimzar_A" target="_blank" rel="noopener">Написать в Telegram</a>
   </div>
 </section>
 
@@ -223,7 +213,7 @@
   <div class="wrap tp-foot-in">
     <div>
       <a class="tp-logo" href="https://payoplata.ru" aria-label="PlataPay Travel">
-        <svg viewBox="0 0 560 145" role="img"><use href="#tp-logo-mark"/></svg>
+        <img src="logo.png" alt="PlataPay Travel" width="1100" height="349">
       </a>
       <p class="muted">Оплата зарубежных сервисов и билетов из России — быстро, безопасно и без автосписаний. PlataPay не является банком или платёжной системой и оказывает консультационную и посредническую помощь.</p>
     </div>
