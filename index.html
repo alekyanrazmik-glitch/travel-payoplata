@@ -14,7 +14,7 @@
 
 <!-- Шрифт и стили виджета Nemo Travel (из инструкции, раздел 4.1) -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700&subset=cyrillic">
-<link rel="stylesheet" href="https://cdn.nemo.travel/search-form/v2.5.22/style.css">
+<link rel="stylesheet" href="https://cdn.nemo.travel/search-form/v2.5.22/flights.search.widget.min.css">
 
 <style>
   :root{
@@ -117,21 +117,18 @@
 
       <!-- ============================================================
            ВИДЖЕТ ПОИСКА АВИАБИЛЕТОВ · Nemo Travel
-           Взято из вашей инструкции (PDF, раздел 4.1):
-             • CDN виджета: https://cdn.nemo.travel/search-form/v2.5.22/
-             • API/booking: https://booking.uzairlines.online
-           Если в инструкции код отличается (другой файл .js или другие
-           параметры init) — замените блок между этими комментариями
-           целиком на точный код из PDF.
+           Код точно по инструкции «АэроТур» (PDF, раздел 4.1).
+           nemoURL   — адрес вашего booking-поддомена (CNAME → sys.nemo.travel).
+           webskyURL — уточните у «АэроТур»: в инструкции указан демо-адрес.
       ============================================================ -->
       <div id="root"></div>
-      <script src="https://cdn.nemo.travel/search-form/v2.5.22/main.js"></script>
+      <script src="https://cdn.nemo.travel/search-form/v2.5.22/flights.search.widget.min.js"></script>
       <script>
         FlightsSearchWidget.init({
-          container: '#root',
-          apiUrl: 'https://booking.uzairlines.online',
-          lang: 'ru',
-          currency: 'RUB'
+          webskyURL: 'http://demo.websky.aero/gru',
+          nemoURL: 'https://booking.uzairlines.online',
+          rootElement: document.getElementById('root'),
+          locale: 'ru'
         });
       </script>
       <!-- ==================== /ВИДЖЕТ ==================== -->
