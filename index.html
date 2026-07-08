@@ -11,71 +11,117 @@
 <meta property="og:url" content="https://travel.payoplata.ru/">
 <meta property="og:title" content="PlataPay Travel — авиабилеты по всему миру">
 <meta property="og:description" content="Поиск и бронирование авиабилетов. Оплата зарубежных билетов из России — быстро и безопасно.">
+<meta name="theme-color" content="#ffffff">
 
-<!-- Шрифт и стили виджета Nemo Travel (из инструкции, раздел 4.1) -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700&subset=cyrillic">
+<!-- Шрифты бренда (Poppins) + шрифт виджета Nemo (Open Sans) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap&subset=cyrillic,latin">
+<!-- Стили виджета Nemo Travel (инструкция «АэроТур», раздел 4.1) -->
 <link rel="stylesheet" href="https://cdn.nemo.travel/search-form/v2.5.22/flights.search.widget.min.css">
 
 <style>
   :root{
-    --bg:#08172F; --bg2:#0c1f40; --bg3:#13294e; --card:#0d1f44;
-    --line:#1d3a6b; --text:#eef3ff; --muted:#9fb2d4; --accent:#2e7bff;
-    --accent2:#7BAEFF; --green:#22C55E;
+    /* Фирменные цвета PlataPay Travel */
+    --navy:#1b2a63;      /* «Plata» */
+    --blue:#3b6ef5;      /* «Pay» / основной акцент */
+    --blue-d:#2a54d4;
+    --green:#2f9e46;     /* «Travel» */
+    --green-d:#268a3c;
+
+    --ink:#16224f;       /* заголовки */
+    --body:#48546f;      /* основной текст */
+    --muted:#7c88a5;
+    --bg:#ffffff;
+    --bg2:#f3f7fd;       /* фон секций */
+    --card:#ffffff;
+    --line:#e4eaf5;
+    --shadow:0 24px 60px -30px rgba(27,42,99,.35);
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
-    background:var(--bg); color:var(--text); max-width:100%; overflow-x:hidden;
+    background:var(--bg); color:var(--body); max-width:100%; overflow-x:hidden;
     line-height:1.55; -webkit-font-smoothing:antialiased;
-    font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Segoe UI',system-ui,sans-serif;
+    font-family:'Open Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
   }
   a{color:inherit;text-decoration:none;}
-  .wrap{max-width:1200px;margin:0 auto;padding:0 24px;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px;}
 
-  /* Header */
-  .tp-hdr{position:sticky;top:0;z-index:50;background:rgba(8,23,47,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
-  .tp-hdr-in{display:flex;align-items:center;justify-content:space-between;height:64px;}
-  .tp-logo{font-size:22px;font-weight:800;letter-spacing:-.01em;}
-  .tp-logo span{color:var(--accent);}
-  .tp-nav{display:flex;gap:22px;align-items:center;font-size:14.5px;font-weight:600;}
-  .tp-nav a{color:var(--muted);}
-  .tp-nav a:hover{color:var(--text);}
-  .tp-cta{background:linear-gradient(180deg,#2e7bff,#1e5fd6);color:#fff !important;padding:9px 16px;border-radius:12px;}
-  .tp-cta:hover{filter:brightness(1.08);}
+  /* ---------- Логотип-надпись ---------- */
+  .tp-logo{display:inline-flex;align-items:baseline;gap:.14em;
+    font-family:'Poppins',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1;
+    font-size:24px;white-space:nowrap;}
+  .tp-logo .p1{color:var(--navy);}
+  .tp-logo .p2{color:var(--blue);}
+  .tp-logo .p3{color:var(--green);font-size:.62em;font-weight:700;align-self:flex-end;
+    position:relative;top:-.06em;margin-left:.08em;letter-spacing:0;}
 
-  /* Hero */
-  .tp-hero{padding:56px 0 28px;text-align:center;background:
-     radial-gradient(1200px 480px at 50% -120px, rgba(46,123,255,.22), transparent 70%);}
-  .tp-eyebrow{display:inline-block;color:var(--accent2);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;}
-  .tp-hero h1{margin:0 0 14px;font-size:clamp(28px,5vw,46px);font-weight:800;letter-spacing:-.02em;line-height:1.1;}
-  .tp-hero h1 span{color:var(--accent);}
+  /* ---------- Header ---------- */
+  .tp-hdr{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .tp-hdr-in{display:flex;align-items:center;justify-content:space-between;height:66px;}
+  .tp-nav{display:flex;gap:22px;align-items:center;font-size:14.5px;font-weight:600;
+    font-family:'Poppins',sans-serif;}
+  .tp-nav a{color:var(--body);}
+  .tp-nav a:hover{color:var(--navy);}
+  .tp-cta{background:linear-gradient(180deg,var(--blue),var(--blue-d));color:#fff !important;
+    padding:10px 18px;border-radius:12px;box-shadow:0 8px 20px -8px rgba(59,110,245,.6);}
+  .tp-cta:hover{filter:brightness(1.06);}
+
+  /* ---------- Hero ---------- */
+  .tp-hero{padding:58px 0 30px;text-align:center;background:
+     radial-gradient(1100px 460px at 50% -140px, rgba(59,110,245,.10), transparent 70%);}
+  .tp-eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--blue);font-weight:700;
+    font-size:13px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:14px;
+    font-family:'Poppins',sans-serif;
+    background:rgba(59,110,245,.08);border:1px solid rgba(59,110,245,.18);
+    padding:6px 14px;border-radius:999px;}
+  .tp-hero h1{margin:0 0 14px;color:var(--ink);font-family:'Poppins',sans-serif;
+    font-size:clamp(28px,5vw,46px);font-weight:800;letter-spacing:-.02em;line-height:1.1;}
+  .tp-hero h1 span{color:var(--blue);}
   .tp-hero p{margin:0 auto;max-width:640px;color:var(--muted);font-size:clamp(15px,2vw,18px);}
 
-  /* Widget mount card */
-  .tp-widget-sec{padding:14px 0 40px;}
+  /* ---------- Widget mount card ---------- */
+  .tp-widget-sec{padding:20px 0 40px;}
+  .tp-widget-head{display:flex;align-items:center;gap:10px;margin:0 0 12px;padding:0 4px;}
+  .tp-widget-head b{font-family:'Poppins',sans-serif;color:var(--ink);font-size:17px;font-weight:700;}
+  .tp-widget-head .dot{width:9px;height:9px;border-radius:50%;background:var(--green);
+    box-shadow:0 0 0 4px rgba(47,158,70,.15);}
   .tp-widget-card{
-    background:linear-gradient(180deg,var(--bg2),var(--card));
-    border:1px solid var(--line);border-radius:22px;padding:18px;
-    box-shadow:0 30px 80px -40px rgba(0,0,0,.7);
+    background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;
+    box-shadow:var(--shadow);
   }
-  /* Let the Nemo widget breathe on the dark card */
   #root{min-height:120px;}
 
-  /* Trust row */
-  .tp-trust{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:8px 0 52px;}
-  .tp-trust .t{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:16px 18px;}
-  .tp-trust .t b{display:block;font-size:15px;margin-bottom:4px;}
+  /* Бренд-акценты внутри виджета Nemo (best-effort: красим основные кнопки/акценты) */
+  #root button[type="submit"],
+  #root .btn-primary,
+  #root .button--primary,
+  #root .nemo-btn-primary,
+  #root .search-button,
+  #root [class*="submit"]{
+    background:linear-gradient(180deg,var(--blue),var(--blue-d)) !important;
+    border-color:var(--blue-d) !important;color:#fff !important;
+  }
+  #root a{color:var(--blue);}
+
+  /* ---------- Trust row ---------- */
+  .tp-trust{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:8px 0 56px;}
+  .tp-trust .t{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:18px 18px;}
+  .tp-trust .t .ic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;
+    justify-content:center;margin-bottom:12px;font-size:18px;background:rgba(59,110,245,.10);}
+  .tp-trust .t b{display:block;font-family:'Poppins',sans-serif;color:var(--ink);font-size:15px;
+    font-weight:700;margin-bottom:4px;}
   .tp-trust .t span{color:var(--muted);font-size:13.5px;}
 
-  /* Footer */
-  .tp-foot{border-top:1px solid var(--line);background:#07132a;padding:36px 0 40px;}
-  .tp-foot-in{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;}
-  .tp-foot .brand{font-size:20px;font-weight:800;}
-  .tp-foot .brand span{color:var(--accent);}
-  .tp-foot .muted{color:var(--muted);font-size:13.5px;max-width:640px;}
-  .tp-foot .links{display:flex;gap:18px;font-size:14px;font-weight:600;}
-  .tp-foot .links a{color:var(--muted);}
-  .tp-foot .links a:hover{color:var(--text);}
+  /* ---------- Footer ---------- */
+  .tp-foot{border-top:1px solid var(--line);background:var(--bg2);padding:38px 0 42px;}
+  .tp-foot-in{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;justify-content:space-between;}
+  .tp-foot .muted{color:var(--muted);font-size:13.5px;max-width:620px;margin:12px 0 0;}
+  .tp-foot .links{display:flex;gap:20px;font-size:14px;font-weight:600;font-family:'Poppins',sans-serif;}
+  .tp-foot .links a{color:var(--body);}
+  .tp-foot .links a:hover{color:var(--navy);}
 
   @media(max-width:768px){
     .wrap{padding:0 16px;}
@@ -83,10 +129,11 @@
     .tp-nav .hide-sm{display:none;}
     .tp-trust{grid-template-columns:1fr 1fr;}
     .tp-hero{padding:40px 0 20px;}
-    .tp-widget-card{padding:12px;border-radius:18px;}
+    .tp-widget-card{padding:14px;border-radius:18px;}
   }
   @media(max-width:480px){
     .tp-trust{grid-template-columns:1fr;}
+    .tp-logo{font-size:21px;}
   }
 </style>
 </head>
@@ -94,7 +141,9 @@
 
 <header class="tp-hdr">
   <div class="wrap tp-hdr-in">
-    <a class="tp-logo" href="https://payoplata.ru">Plata<span>Pay</span> Travel</a>
+    <a class="tp-logo" href="https://payoplata.ru" aria-label="PlataPay Travel">
+      <span class="p1">Plata</span><span class="p2">Pay</span><span class="p3">Travel</span>
+    </a>
     <nav class="tp-nav">
       <a class="hide-sm" href="https://payoplata.ru/catalog">Сервисы</a>
       <a class="hide-sm" href="https://payoplata.ru/faq">Вопросы</a>
@@ -105,7 +154,7 @@
 
 <section class="tp-hero">
   <div class="wrap">
-    <span class="tp-eyebrow">Авиабилеты по всему миру</span>
+    <span class="tp-eyebrow">✈ Авиабилеты по всему миру</span>
     <h1>Найдём и оформим <span>авиабилеты</span> для вас</h1>
     <p>Поиск рейсов по всему миру и бронирование напрямую. Оплата удобным способом из России — быстро, безопасно и без автосписаний.</p>
   </div>
@@ -113,6 +162,7 @@
 
 <section class="tp-widget-sec">
   <div class="wrap">
+    <div class="tp-widget-head"><span class="dot"></span><b>Поиск авиабилетов</b></div>
     <div class="tp-widget-card">
 
       <!-- ============================================================
@@ -140,10 +190,10 @@
 <section class="tp-widget-sec" style="padding-top:0;">
   <div class="wrap">
     <div class="tp-trust">
-      <div class="t"><b>Оплата из России</b><span>Российскими картами и через СБП</span></div>
-      <div class="t"><b>Без автосписаний</b><span>Оплачиваете только выбранный билет</span></div>
-      <div class="t"><b>Поддержка каждый день</b><span>На связи с 08:00 до 24:00 МСК</span></div>
-      <div class="t"><b>Помощь с оформлением</b><span>Подскажем и оформим, если что‑то непонятно</span></div>
+      <div class="t"><div class="ic">🇷🇺</div><b>Оплата из России</b><span>Российскими картами и через СБП</span></div>
+      <div class="t"><div class="ic">🔒</div><b>Без автосписаний</b><span>Оплачиваете только выбранный билет</span></div>
+      <div class="t"><div class="ic">💬</div><b>Поддержка каждый день</b><span>На связи с 08:00 до 24:00 МСК</span></div>
+      <div class="t"><div class="ic">🧭</div><b>Помощь с оформлением</b><span>Подскажем и оформим, если что-то непонятно</span></div>
     </div>
   </div>
 </section>
@@ -151,7 +201,9 @@
 <footer class="tp-foot">
   <div class="wrap tp-foot-in">
     <div>
-      <div class="brand">Plata<span>Pay</span> Travel</div>
+      <a class="tp-logo" href="https://payoplata.ru" aria-label="PlataPay Travel">
+        <span class="p1">Plata</span><span class="p2">Pay</span><span class="p3">Travel</span>
+      </a>
       <p class="muted">Оплата зарубежных сервисов и билетов из России — быстро, безопасно и без автосписаний. PlataPay не является банком или платёжной системой и оказывает консультационную и посредническую помощь.</p>
     </div>
     <div class="links">
