@@ -30,6 +30,7 @@
     --green:#33c25b;
   }
   *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
   html,body{margin:0;padding:0;}
   body{
     background:var(--bg); color:var(--text); max-width:100%; overflow-x:hidden;
@@ -40,42 +41,47 @@
   a{color:var(--accent-l);text-decoration:none;}
   a:hover{color:var(--text);}
   .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 26px;}
+  .sec-head h2{margin:0 0 8px;font-size:clamp(22px,3.4vw,30px);font-weight:700;letter-spacing:-.02em;}
+  .sec-head p{margin:0;color:var(--muted);font-size:15px;}
 
   /* ---------- Header ---------- */
   .tp-hdr{position:sticky;top:0;z-index:30;background:rgba(8,23,47,.92);
     backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
-  .tp-hdr-in{display:flex;align-items:center;justify-content:space-between;height:66px;}
+  .tp-hdr-in{display:flex;align-items:center;justify-content:space-between;height:82px;}
   .tp-logo{display:inline-flex;align-items:center;line-height:0;}
-  .tp-logo img{height:38px;width:auto;display:block;}
+  .tp-logo img{height:54px;width:auto;display:block;}
   .tp-nav{display:flex;gap:12px;align-items:center;font-size:14px;font-weight:600;}
   .tp-nav a.link{color:var(--muted);padding:6px 6px;}
   .tp-nav a.link:hover{color:var(--text);}
-  .tp-cta{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:999px;
+  .tp-cta{display:inline-flex;align-items:center;gap:6px;padding:11px 20px;border-radius:999px;
     font-weight:600;background:linear-gradient(180deg,var(--accent),var(--accent-d));color:#fff !important;
     box-shadow:0 8px 24px -8px rgba(46,123,255,.7);}
   .tp-cta:hover{filter:brightness(1.08);}
 
-  /* ---------- Hero ---------- */
-  .tp-hero{padding:56px 0 26px;text-align:center;
-    background:radial-gradient(1200px 520px at 50% -140px, rgba(46,123,255,.22), transparent 70%);}
+  /* ---------- Hero (travel) ---------- */
+  .tp-hero{position:relative;overflow:hidden;padding:64px 0 30px;text-align:center;
+    background:radial-gradient(1200px 560px at 50% -160px, rgba(46,123,255,.28), transparent 70%);}
+  .tp-hero .sky{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;}
+  .tp-hero .wrap{position:relative;z-index:1;}
   .tp-eyebrow{display:inline-flex;align-items:center;gap:7px;color:#cfe0ff;font-weight:600;font-size:13px;
-    background:rgba(46,123,255,.10);border:1px solid rgba(46,123,255,.28);
-    padding:7px 14px;border-radius:999px;margin-bottom:16px;backdrop-filter:blur(6px);}
-  .tp-hero h1{margin:0 0 14px;font-size:clamp(28px,5vw,46px);font-weight:700;letter-spacing:-.02em;line-height:1.12;}
-  .tp-hero h1 span{color:var(--accent-l);}
+    background:rgba(46,123,255,.12);border:1px solid rgba(46,123,255,.30);
+    padding:8px 16px;border-radius:999px;margin-bottom:18px;backdrop-filter:blur(6px);}
+  .tp-hero h1{margin:0 0 16px;font-size:clamp(30px,5.4vw,52px);font-weight:800;letter-spacing:-.025em;line-height:1.08;}
+  .tp-hero h1 span{background:linear-gradient(120deg,var(--accent-l),#c9dbff);-webkit-background-clip:text;
+    background-clip:text;-webkit-text-fill-color:transparent;}
   .tp-hero p.lead{margin:0 auto;max-width:660px;color:var(--body);font-size:clamp(15px,2vw,18px);}
-  .tp-trust-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px;}
+  .tp-trust-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px;}
   .tp-trust-row .chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#cfe0ff;
     background:rgba(46,123,255,.10);border:1px solid rgba(46,123,255,.28);border-radius:999px;
-    padding:7px 12px;backdrop-filter:blur(6px);}
+    padding:8px 14px;backdrop-filter:blur(6px);}
 
   /* ---------- Widget ---------- */
-  .tp-widget-sec{padding:26px 0 34px;}
+  .tp-widget-sec{padding:22px 0 40px;}
   .tp-widget-head{display:flex;align-items:center;gap:10px;margin:0 0 14px;}
   .tp-widget-head .dot{width:9px;height:9px;border-radius:50%;background:var(--green);
     box-shadow:0 0 0 4px rgba(51,194,91,.18);}
   .tp-widget-head b{font-size:17px;font-weight:600;color:var(--text);}
-  /* Витрина: тёмная брендовая рамка + светлая панель под форму Nemo */
   .tp-widget-card{
     background:linear-gradient(180deg,var(--bg2),var(--bg3));
     border:1px solid var(--line2);border-radius:22px;padding:14px;
@@ -84,17 +90,15 @@
   .tp-widget-inner{background:#ffffff;border-radius:16px;padding:18px;}
   #root{min-height:120px;
     font-family:'Open Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;}
-  /* --- Бренд-стилизация формы Nemo ---
-     Селекторы по ТИПАМ элементов (input/select/button), а не по классам:
-     классы виджета появляются только при рендере с CDN, а типы элементов
-     стабильны — так стилизация надёжно ложится на реальную форму. */
+  /* --- Бренд-стилизация формы Nemo (свой CSS поверх, как в инструкции стр.8).
+     Селекторы по ТИПАМ элементов — надёжнее классов, т.к. классы виджета
+     появляются только при рендере с CDN. --- */
   #root input, #root select, #root textarea{ border-radius:10px !important; }
   #root input:focus, #root select:focus, #root textarea:focus{
     border-color:var(--accent) !important;
     box-shadow:0 0 0 3px rgba(46,123,255,.18) !important;
   }
   #root button, #root [class*="button"], #root [class*="btn"]{ border-radius:10px !important; }
-  /* Основная кнопка поиска — фирменный синий градиент */
   #root button[type="submit"],
   #root [class*="submit"], #root [class*="btn-primary"], #root [class*="button--primary"],
   #root [class*="search-button"], #root [class*="searchButton"]{
@@ -104,8 +108,32 @@
   }
   #root a{ color:var(--accent) !important; }
 
+  /* ---------- Popular destinations ---------- */
+  .tp-dest{padding:20px 0 44px;}
+  .tp-dest-grid{display:grid;gap:14px;grid-template-columns:repeat(4,1fr);}
+  .tp-dest-card{position:relative;overflow:hidden;display:block;
+    background:linear-gradient(180deg,var(--bg2),#0a1a38);border:1px solid var(--line);
+    border-radius:18px;padding:18px;transition:transform .18s ease,border-color .18s ease;}
+  .tp-dest-card:hover{transform:translateY(-3px);border-color:var(--accent);}
+  .tp-dest-card .flag{font-size:30px;line-height:1;}
+  .tp-dest-card .city{display:block;margin-top:12px;font-size:18px;font-weight:700;color:var(--text);}
+  .tp-dest-card .country{display:block;color:var(--muted);font-size:13px;}
+  .tp-dest-card .go{display:block;margin-top:12px;font-size:13px;font-weight:600;color:var(--accent-l);}
+  .tp-dest-card .plane{position:absolute;right:-8px;top:-8px;font-size:44px;opacity:.06;transform:rotate(18deg);}
+
+  /* ---------- How it works ---------- */
+  .tp-how{padding:14px 0 46px;}
+  .tp-how-grid{display:grid;gap:16px;grid-template-columns:repeat(3,1fr);}
+  .tp-step{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+    border:1px solid var(--line);border-radius:18px;padding:24px;backdrop-filter:blur(8px);}
+  .tp-step .n{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:700;
+    font-size:16px;color:#fff;background:linear-gradient(180deg,var(--accent),var(--accent-d));
+    box-shadow:0 10px 24px -10px rgba(46,123,255,.7);margin-bottom:14px;}
+  .tp-step b{display:block;font-size:16px;color:var(--text);margin-bottom:6px;}
+  .tp-step span{color:var(--muted);font-size:14px;}
+
   /* ---------- Advantages ---------- */
-  .tp-adv{padding:10px 0 44px;}
+  .tp-adv{padding:10px 0 46px;}
   .tp-adv-grid{display:grid;gap:14px;grid-template-columns:repeat(4,1fr);}
   .tp-adv-card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
     border:1px solid var(--line);border-radius:16px;padding:20px;backdrop-filter:blur(8px);}
@@ -116,32 +144,45 @@
   .tp-adv-card span{color:var(--muted);font-size:13.5px;}
 
   /* ---------- CTA ---------- */
-  .tp-cta-block{background:linear-gradient(180deg,var(--bg2),var(--bg3));border:1px solid var(--line);
-    border-radius:20px;padding:34px 26px;text-align:center;margin-bottom:46px;}
-  .tp-cta-block h2{margin:0 0 8px;font-size:24px;font-weight:600;letter-spacing:-.01em;}
-  .tp-cta-block p{margin:0 0 18px;color:var(--muted);}
-  .tp-btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;
+  .tp-cta-block{position:relative;overflow:hidden;
+    background:linear-gradient(120deg,#123163,#0c1f40);border:1px solid var(--line2);
+    border-radius:22px;padding:40px 26px;text-align:center;margin-bottom:48px;}
+  .tp-cta-block .glow{position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(600px 240px at 80% -40px,rgba(46,123,255,.35),transparent 70%);}
+  .tp-cta-block h2{position:relative;margin:0 0 8px;font-size:26px;font-weight:700;letter-spacing:-.01em;}
+  .tp-cta-block p{position:relative;margin:0 0 20px;color:var(--body);}
+  .tp-btn-primary{position:relative;display:inline-flex;align-items:center;gap:8px;padding:15px 28px;border-radius:999px;
     font-weight:600;font-size:15px;background:linear-gradient(180deg,var(--accent),var(--accent-d));
     color:#fff !important;box-shadow:0 8px 24px -8px rgba(46,123,255,.7);}
   .tp-btn-primary:hover{filter:brightness(1.08);}
 
   /* ---------- Footer ---------- */
-  .tp-foot{border-top:1px solid var(--line);background:#07132a;padding:38px 0 42px;}
+  .tp-foot{border-top:1px solid var(--line);background:#07132a;padding:40px 0 44px;}
   .tp-foot-in{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;justify-content:space-between;}
-  .tp-foot .tp-logo img{height:40px;}
-  .tp-foot .muted{color:var(--muted);font-size:13.5px;max-width:620px;margin:14px 0 0;}
+  .tp-foot .tp-logo img{height:56px;}
+  .tp-foot .muted{color:var(--muted);font-size:13.5px;max-width:620px;margin:16px 0 0;}
   .tp-foot .links{display:flex;gap:20px;font-size:14px;font-weight:600;}
   .tp-foot .links a{color:var(--muted);}
   .tp-foot .links a:hover{color:var(--text);}
 
-  @media(max-width:900px){ .tp-adv-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:900px){
+    .tp-dest-grid{grid-template-columns:1fr 1fr;}
+    .tp-adv-grid{grid-template-columns:1fr 1fr;}
+    .tp-how-grid{grid-template-columns:1fr;}
+  }
   @media(max-width:768px){
     .wrap{padding:0 16px;}
     .tp-nav .hide-sm{display:none;}
-    .tp-hero{padding:40px 0 18px;}
-    .tp-logo img{height:32px;}
+    .tp-hdr-in{height:70px;}
+    .tp-logo img{height:44px;}
+    .tp-hero{padding:44px 0 20px;}
+    .tp-foot .tp-logo img{height:46px;}
   }
-  @media(max-width:480px){ .tp-adv-grid{grid-template-columns:1fr;} }
+  @media(max-width:480px){
+    .tp-dest-grid{grid-template-columns:1fr 1fr;}
+    .tp-adv-grid{grid-template-columns:1fr;}
+    .tp-logo img{height:40px;}
+  }
 </style>
 </head>
 <body>
@@ -152,17 +193,37 @@
       <img src="logo.png" alt="PlataPay Travel" width="1100" height="349">
     </a>
     <nav class="tp-nav">
-      <a class="link hide-sm" href="https://payoplata.ru/catalog">Сервисы</a>
-      <a class="link hide-sm" href="https://payoplata.ru/faq">Вопросы</a>
+      <a class="link hide-sm" href="#destinations">Направления</a>
+      <a class="link hide-sm" href="#how">Как это работает</a>
       <a class="tp-cta" href="https://t.me/Kimzar_A" target="_blank" rel="noopener">Написать в Telegram</a>
     </nav>
   </div>
 </header>
 
 <section class="tp-hero">
+  <!-- Декоративный «travel»-фон: лётные дуги и самолёты -->
+  <svg class="sky" viewBox="0 0 1440 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="arc" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#2e7bff" stop-opacity="0"/>
+        <stop offset="0.5" stop-color="#7BAEFF" stop-opacity="0.9"/>
+        <stop offset="1" stop-color="#2e7bff" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <path d="M-40 430 Q 420 140 900 300 T 1500 210" fill="none" stroke="url(#arc)" stroke-width="2" stroke-dasharray="6 10"/>
+    <path d="M-40 250 Q 500 460 980 250 T 1500 340" fill="none" stroke="url(#arc)" stroke-width="2" stroke-dasharray="4 12" opacity=".7"/>
+    <g fill="#cfe0ff" opacity=".8">
+      <circle cx="120" cy="120" r="2"/><circle cx="360" cy="70" r="1.6"/><circle cx="720" cy="110" r="2.2"/>
+      <circle cx="1080" cy="80" r="1.6"/><circle cx="1320" cy="140" r="2"/><circle cx="560" cy="40" r="1.4"/>
+    </g>
+    <g fill="#7BAEFF">
+      <path d="M905 296 l26 -8 -8 12 8 4 -4 6 -12 -4 -10 8 z"/>
+      <path d="M975 250 l24 -7 -7 11 7 4 -4 5 -11 -3 -9 7 z" opacity=".6"/>
+    </g>
+  </svg>
   <div class="wrap">
     <span class="tp-eyebrow">✈ Авиабилеты по всему миру</span>
-    <h1>Найдём и оформим <span>авиабилеты</span> для вас</h1>
+    <h1>Летайте куда угодно —<br><span>оплата из России</span></h1>
     <p class="lead">Поиск рейсов по всему миру и бронирование напрямую. Оплата удобным способом из России — быстро, безопасно и без автосписаний.</p>
     <div class="tp-trust-row">
       <span class="chip">🌍 Рейсы по всему миру</span>
@@ -173,7 +234,7 @@
   </div>
 </section>
 
-<section class="tp-widget-sec">
+<section class="tp-widget-sec" id="search">
   <div class="wrap">
     <div class="tp-widget-head"><span class="dot"></span><b>Поиск авиабилетов</b></div>
     <div class="tp-widget-card">
@@ -203,6 +264,39 @@
   </div>
 </section>
 
+<section class="tp-dest" id="destinations">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Популярные направления</h2>
+      <p>Куда чаще всего летают наши путешественники — выберите город и найдите билеты</p>
+    </div>
+    <div class="tp-dest-grid">
+      <a class="tp-dest-card" href="#search"><span class="plane">✈</span><span class="flag">🇹🇷</span><span class="city">Стамбул</span><span class="country">Турция</span><span class="go">Найти билеты →</span></a>
+      <a class="tp-dest-card" href="#search"><span class="plane">✈</span><span class="flag">🇦🇪</span><span class="city">Дубай</span><span class="country">ОАЭ</span><span class="go">Найти билеты →</span></a>
+      <a class="tp-dest-card" href="#search"><span class="plane">✈</span><span class="flag">🇦🇲</span><span class="city">Ереван</span><span class="country">Армения</span><span class="go">Найти билеты →</span></a>
+      <a class="tp-dest-card" href="#search"><span class="plane">✈</span><span class="flag">🇹🇭</span><span class="city">Бангкок</span><span class="country">Таиланд</span><span class="go">Найти билеты →</span></a>
+      <a class="tp-dest-card" href="#search"><span class="plane">✈</span><span class="flag">🇬🇪</span><span class="city">Тбилиси</span><span class="country">Грузия</span><span class="go">Найти билеты →</span></a>
+      <a class="tp-dest-card" href="#search"><span class="plane">✈</span><span class="flag">🇨🇳</span><span class="city">Пекин</span><span class="country">Китай</span><span class="go">Найти билеты →</span></a>
+      <a class="tp-dest-card" href="#search"><span class="plane">✈</span><span class="flag">🇷🇸</span><span class="city">Белград</span><span class="country">Сербия</span><span class="go">Найти билеты →</span></a>
+      <a class="tp-dest-card" href="#search"><span class="plane">✈</span><span class="flag">🇲🇻</span><span class="city">Мале</span><span class="country">Мальдивы</span><span class="go">Найти билеты →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="tp-how" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Как это работает</h2>
+      <p>Три простых шага — от поиска рейса до билета на руках</p>
+    </div>
+    <div class="tp-how-grid">
+      <div class="tp-step"><div class="n">1</div><b>Найдите рейс</b><span>Введите города и даты в форме поиска — покажем рейсы по всему миру, прямые и с пересадками.</span></div>
+      <div class="tp-step"><div class="n">2</div><b>Забронируйте</b><span>Выберите подходящий вариант и оформите бронирование напрямую, без скрытых наценок.</span></div>
+      <div class="tp-step"><div class="n">3</div><b>Оплатите из России</b><span>Оплата российскими картами и через СБП — быстро, безопасно и без автосписаний.</span></div>
+    </div>
+  </div>
+</section>
+
 <section class="tp-adv">
   <div class="wrap">
     <div class="tp-adv-grid">
@@ -216,6 +310,7 @@
 
 <section class="wrap">
   <div class="tp-cta-block">
+    <div class="glow"></div>
     <h2>Не нашли нужный рейс или остались вопросы?</h2>
     <p>Напишите нам — подберём билеты и поможем с оплатой из России.</p>
     <a class="tp-btn-primary" href="https://t.me/Kimzar_A" target="_blank" rel="noopener">Написать в Telegram</a>
