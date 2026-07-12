@@ -844,6 +844,16 @@
 				.pp-hburger {
 					display: inline-flex !important;
 				}
+				.pp-menu {
+					position: absolute;
+					top: 100%;
+					left: 0;
+					right: 0;
+					z-index: 80;
+					max-height: calc(100vh - 76px);
+					overflow-y: auto;
+					box-shadow: 0 22px 50px -28px rgba(0, 0, 0, 0.65);
+				}
 				.pp-menu.is-open {
 					display: block !important;
 				}
@@ -8702,11 +8712,14 @@
 
 									<div
 										data-dc-tpl="658"
+										class="pp-foot-socials"
 										style="display: flex; gap: 10px"
 									>
 										<a
 											data-dc-tpl="659"
-											href="#"
+											href="https://t.me/Kimzar_A"
+											target="_blank"
+											rel="noopener"
 											aria-label="Telegram"
 											class="scpl"
 											style="
@@ -8750,7 +8763,9 @@
 
 										<a
 											data-dc-tpl="662"
-											href="#"
+											href="https://wa.me/79676726909"
+											target="_blank"
+											rel="noopener"
 											aria-label="WhatsApp"
 											class="scpm"
 											style="
@@ -8794,8 +8809,8 @@
 
 										<a
 											data-dc-tpl="665"
-											href="#"
-											aria-label="ВКонтакте"
+											href="mailto:Apolon7-rus@mail.ru"
+											aria-label="Email"
 											class="scpl"
 											style="
 												width: 42px;
@@ -8827,11 +8842,20 @@
 												width="20"
 												height="20"
 												viewBox="0 0 24 24"
-												fill="currentColor"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
 											>
+												<rect
+													x="3"
+													y="5"
+													width="18"
+													height="14"
+													rx="2"
+												></rect>
 												<path
 													data-dc-tpl="667"
-													d="M13.2 17c-5 0-8.2-3.5-8.3-9.3h2.6c.1 4.3 2.1 6.1 3.6 6.5V7.7h2.5v3.8c1.5-.16 3-1.9 3.6-3.8h2.5c-.44 2.3-2 4-3.1 4.7 1.1.55 2.9 2.05 3.6 4.6h-2.8c-.53-1.7-1.9-3-3.3-3.17V17h-.3Z"
+													d="M3 7l9 6 9-6"
 												></path>
 											</svg>
 										</a>
@@ -9022,7 +9046,9 @@
 
 											<a
 												data-dc-tpl="686"
-												href="#"
+												href="https://wa.me/79676726909"
+												target="_blank"
+												rel="noopener"
 												class="scpn"
 												style="
 													font-size: 14.5px;
@@ -9046,7 +9072,7 @@
 
 											<a
 												data-dc-tpl="688"
-												href="#"
+												href="mailto:Apolon7-rus@mail.ru"
 												class="scpn"
 												style="
 													font-size: 14.5px;
@@ -9144,7 +9170,9 @@
 								>
 									©
 									<span class="sc-interp">2026</span> PlataPay
-									Travel · Все права защищены
+									· ООО «Аполон7-Рус» · ИНН 2304086282 · ОГРН
+									1252300042356 · г. Геленджик, ул.
+									Островского, 80А
 								</div>
 
 								<div
@@ -9676,7 +9704,8 @@
 				}
 
 				if (mobileMenu && burger) {
-					burger.addEventListener("click", function () {
+					burger.addEventListener("click", function (event) {
+						event.stopPropagation()
 						setMenuOpen(!mobileMenu.classList.contains("is-open"))
 					})
 
