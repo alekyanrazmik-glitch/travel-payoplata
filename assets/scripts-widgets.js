@@ -2,12 +2,11 @@ document.addEventListener("DOMContentLoaded", function () {
 	const root = document.getElementById("root")
 
 	if (window.FlightsSearchWidget && root) {
-		// TODO: заменить demo-эндпоинт на боевой из личного кабинета Nemo/AeroTur.
 		FlightsSearchWidget.init({
-			webskyURL: "https://demo.websky.aero/gru",
-			nemoURL: "https://travel.payoplata.ru",
-			rootElement: root,
-			locale: "ru",
+			container: "#root",
+			apiUrl: "https://booking.uzairlines.online",
+			lang: "ru",
+			currency: "RUB",
 		})
 	}
 
